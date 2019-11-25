@@ -1,0 +1,11 @@
+  GNU nano 4.3                                                                                     checkHost.sh                                                                                               
+#!/bin/bash
+
+for i in $@
+do
+ping -c 1 $1 &> /dev/null
+
+if [ $? -ne 0 ]; then
+        echo "`date`: ping failed, $i is down!" | mail -s  "$i host is down!" email@email.com
+fi
+done
